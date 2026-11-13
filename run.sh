@@ -1,2 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")"
 rm -rf ./perf
-CUDA_VISIBLE_DEVICES=1 python /data/wangzhen/ir-ops/triton_softmax.py
+mkdir -p ./perf
+CUDA_VISIBLE_DEVICES=1 /data/wangzhen/miniconda3/envs/ir-ops/bin/python ./triton_softmax.py
