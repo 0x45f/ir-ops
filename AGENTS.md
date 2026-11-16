@@ -1,2 +1,3 @@
 - 执行代码使用ir-ops这个python虚拟环境
 - 当需要修改llvm ir时，直接编辑修改llvm ir文件，不要通过triton代码生成llvm ir
+- 每次性能优化任务生成一个文档来记录优化的优化过程
