@@ -26,6 +26,7 @@ class _Executable:
     launcher: object
     packed_metadata: tuple
     cubin: bytes
+    num_programs: int
 
 
 @lru_cache(maxsize=8)
@@ -62,10 +63,15 @@ def _compile_llvm_ir(device_index: int, llir: str) -> _Executable:
         )
         launcher = driver.active.launcher_cls(source, launch_metadata)
         device = driver.active.get_current_device()
-        module, function, _, _, _ = driver.active.utils.load_binary(
+        module, function, n_regs, _, _ = driver.active.utils.load_binary(
             compile_metadata["name"], cubin, _SHARED_BYTES, device
         )
-        return _Executable(module, function, launcher, backend.pack_metadata(launch_metadata), cubin)
+        # Match the persistent grid calculation in triton_softmax.softmax.
+        properties = driver.active.utils.get_device_properties(device)
+        occupancy = properties["max_num_regs"] // (n_regs * properties["warpSize"] * _NUM_WARPS)
+        occupancy = min(occupancy, properties["max_shared_mem"] // _SHARED_BYTES)
+        num_programs = properties["multiprocessor_count"] * occupancy
+        return _Executable(module, function, launcher, backend.pack_metadata(launch_metadata), cubin, num_programs)
 
 
 def softmax_from_llir(x: torch.Tensor) -> torch.Tensor:
@@ -110,7 +116,7 @@ def softmax_from_llir(x: torch.Tensor) -> torch.Tensor:
         device = driver.active.get_current_device()
         stream = driver.active.get_current_stream(device)
         executable.launcher(
-            n_rows, 1, 1, stream, executable.function, executable.packed_metadata,
+            min(executable.num_programs, n_rows), 1, 1, stream, executable.function, executable.packed_metadata,
             None, None, None, y, x, x.stride(0), y.stride(0), n_rows, n_cols,
         )
     return y[:, :original_n_cols].contiguous() if needs_padding else y
