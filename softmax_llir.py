@@ -12,11 +12,11 @@ from triton.runtime.driver import driver
 
 
 _LLIR_PATH = Path(__file__).with_name("softmax_kernel.llir")
-_BLOCK_SIZE = 8192
+_BLOCK_SIZE = 16384
 _NUM_WARPS = 8
 _NUM_STAGES = 4
-# Metadata of the IR generated for float32 input of shape (4096, 8064).
-_SHARED_BYTES = 98336
+# Metadata of the IR generated for float32 input of shape (4096, 8320).
+_SHARED_BYTES = 196640
 
 
 @dataclass
@@ -77,7 +77,7 @@ def _compile_llvm_ir(device_index: int, llir: str) -> _Executable:
 def softmax_from_llir(x: torch.Tensor) -> torch.Tensor:
     """Compute row-wise softmax from the saved LLVM IR on an SM 90 CUDA GPU.
 
-    ``x`` must be contiguous, 2D, float32, and have 1 to 8192 columns.
+    ``x`` must be contiguous, 2D, float32, and have 1 to 16384 columns.
     Inputs that do not meet the saved IR's alignment specialization are padded.
     Compilation happens on the first call for each GPU and IR content.
     """

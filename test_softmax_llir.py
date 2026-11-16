@@ -15,7 +15,8 @@ class SoftmaxLlirTest(unittest.TestCase):
 
     def test_matches_torch_for_multiple_shapes(self):
         torch.manual_seed(0)
-        for rows, cols in [(1, 1), (7, 17), (32, 780), (1823, 781), (4, 1024), (4096, 8064), (4, 8192)]:
+        for rows, cols in [(1, 1), (7, 17), (32, 780), (1823, 781), (4, 1024),
+                           (4096, 8064), (4, 8192), (4096, 8320), (4, 16384)]:
             with self.subTest(rows=rows, cols=cols):
                 x = torch.randn(rows, cols, device="cuda", dtype=torch.float32)
                 actual = softmax_from_llir(x)
@@ -33,8 +34,8 @@ class SoftmaxLlirTest(unittest.TestCase):
             softmax_from_llir(torch.randn(2, 3))
         with self.assertRaisesRegex(TypeError, "float32"):
             softmax_from_llir(torch.randn(2, 3, device="cuda", dtype=torch.float16))
-        with self.assertRaisesRegex(ValueError, "8192"):
-            softmax_from_llir(torch.randn(2, 8193, device="cuda"))
+        with self.assertRaisesRegex(ValueError, "16384"):
+            softmax_from_llir(torch.randn(2, 16385, device="cuda"))
 
 
 if __name__ == "__main__":
