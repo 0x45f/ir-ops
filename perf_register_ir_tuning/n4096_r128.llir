@@ -1,0 +1,385 @@
+; Direct LLVM IR rewrite: vector loads -> register reductions -> vector stores.
+; block=4096, num_warps=4, rows_per_cta=1, shared=16
+target datalayout = "e-p3:32:32-p4:32:32-p5:32:32-p6:32:32-p7:32:32-i64:64-i128:128-v16:16-v32:32-n16:32:64"
+@global_smem = external addrspace(3) global [0 x i8], align 16
+define ptx_kernel void @softmax_kernel(ptr addrspace(1) %out, ptr addrspace(1) %in, i32 %istride, i32 %ostride, i32 %rows, i32 %cols, ptr addrspace(1) %scratch, ptr addrspace(1) %profile) #0 {
+entry:
+  %v1 = call i32 @llvm.nvvm.read.ptx.sreg.tid.x()
+  %v2 = call i32 @llvm.nvvm.read.ptx.sreg.ctaid.x()
+  %v3 = and i32 %v1, 31
+  %v4 = lshr i32 %v1, 5
+  %v5 = udiv i32 %v1, 128
+  %v6 = icmp ult i32 %v2, %rows
+  br i1 %v6, label %body, label %exit
+body:
+  %v7 = zext i32 %v2 to i64
+  %v8 = zext i32 %istride to i64
+  %v9 = zext i32 %ostride to i64
+  %v10 = mul i64 %v7, %v8
+  %v11 = getelementptr float, ptr addrspace(1) %in, i64 %v10
+  %v12 = mul i64 %v7, %v9
+  %v13 = getelementptr float, ptr addrspace(1) %out, i64 %v12
+  %v14 = urem i32 %v1, 128
+  %v15 = mul i32 %v14, 4
+  %v16 = mul i32 %v5, 4
+  %v17 = getelementptr float, ptr addrspace(3) @global_smem, i32 %v4
+  %v18 = icmp eq i32 %v3, 0
+  %v19 = add i32 %v15, 0
+  %v20 = zext i32 %v19 to i64
+  %v21 = getelementptr float, ptr addrspace(1) %v11, i64 %v20
+  %v22 = call {float, float, float, float} asm sideeffect "ld.global.v4.b32 {$0,$1,$2,$3}, [$4];", "=f,=f,=f,=f,l"(ptr addrspace(1) %v21)
+  %v23 = extractvalue {float, float, float, float} %v22, 0
+  %v24 = extractvalue {float, float, float, float} %v22, 1
+  %v25 = extractvalue {float, float, float, float} %v22, 2
+  %v26 = extractvalue {float, float, float, float} %v22, 3
+  %v27 = add i32 %v15, 512
+  %v28 = zext i32 %v27 to i64
+  %v29 = getelementptr float, ptr addrspace(1) %v11, i64 %v28
+  %v30 = call {float, float, float, float} asm sideeffect "ld.global.v4.b32 {$0,$1,$2,$3}, [$4];", "=f,=f,=f,=f,l"(ptr addrspace(1) %v29)
+  %v31 = extractvalue {float, float, float, float} %v30, 0
+  %v32 = extractvalue {float, float, float, float} %v30, 1
+  %v33 = extractvalue {float, float, float, float} %v30, 2
+  %v34 = extractvalue {float, float, float, float} %v30, 3
+  %v35 = add i32 %v15, 1024
+  %v36 = zext i32 %v35 to i64
+  %v37 = getelementptr float, ptr addrspace(1) %v11, i64 %v36
+  %v38 = call {float, float, float, float} asm sideeffect "ld.global.v4.b32 {$0,$1,$2,$3}, [$4];", "=f,=f,=f,=f,l"(ptr addrspace(1) %v37)
+  %v39 = extractvalue {float, float, float, float} %v38, 0
+  %v40 = extractvalue {float, float, float, float} %v38, 1
+  %v41 = extractvalue {float, float, float, float} %v38, 2
+  %v42 = extractvalue {float, float, float, float} %v38, 3
+  %v43 = add i32 %v15, 1536
+  %v44 = zext i32 %v43 to i64
+  %v45 = getelementptr float, ptr addrspace(1) %v11, i64 %v44
+  %v46 = call {float, float, float, float} asm sideeffect "ld.global.v4.b32 {$0,$1,$2,$3}, [$4];", "=f,=f,=f,=f,l"(ptr addrspace(1) %v45)
+  %v47 = extractvalue {float, float, float, float} %v46, 0
+  %v48 = extractvalue {float, float, float, float} %v46, 1
+  %v49 = extractvalue {float, float, float, float} %v46, 2
+  %v50 = extractvalue {float, float, float, float} %v46, 3
+  %v51 = add i32 %v15, 2048
+  %v52 = zext i32 %v51 to i64
+  %v53 = getelementptr float, ptr addrspace(1) %v11, i64 %v52
+  %v54 = call {float, float, float, float} asm sideeffect "ld.global.v4.b32 {$0,$1,$2,$3}, [$4];", "=f,=f,=f,=f,l"(ptr addrspace(1) %v53)
+  %v55 = extractvalue {float, float, float, float} %v54, 0
+  %v56 = extractvalue {float, float, float, float} %v54, 1
+  %v57 = extractvalue {float, float, float, float} %v54, 2
+  %v58 = extractvalue {float, float, float, float} %v54, 3
+  %v59 = add i32 %v15, 2560
+  %v60 = zext i32 %v59 to i64
+  %v61 = getelementptr float, ptr addrspace(1) %v11, i64 %v60
+  %v62 = call {float, float, float, float} asm sideeffect "ld.global.v4.b32 {$0,$1,$2,$3}, [$4];", "=f,=f,=f,=f,l"(ptr addrspace(1) %v61)
+  %v63 = extractvalue {float, float, float, float} %v62, 0
+  %v64 = extractvalue {float, float, float, float} %v62, 1
+  %v65 = extractvalue {float, float, float, float} %v62, 2
+  %v66 = extractvalue {float, float, float, float} %v62, 3
+  %v67 = add i32 %v15, 3072
+  %v68 = zext i32 %v67 to i64
+  %v69 = getelementptr float, ptr addrspace(1) %v11, i64 %v68
+  %v70 = call {float, float, float, float} asm sideeffect "ld.global.v4.b32 {$0,$1,$2,$3}, [$4];", "=f,=f,=f,=f,l"(ptr addrspace(1) %v69)
+  %v71 = extractvalue {float, float, float, float} %v70, 0
+  %v72 = extractvalue {float, float, float, float} %v70, 1
+  %v73 = extractvalue {float, float, float, float} %v70, 2
+  %v74 = extractvalue {float, float, float, float} %v70, 3
+  %v75 = add i32 %v15, 3584
+  %v76 = icmp ult i32 %v75, %cols
+  %v77 = zext i32 %v75 to i64
+  %v78 = getelementptr float, ptr addrspace(1) %v11, i64 %v77
+  %v79 = call {float, float, float, float} asm sideeffect "mov.b32 $0, 0xff800000; mov.b32 $1, 0xff800000; mov.b32 $2, 0xff800000; mov.b32 $3, 0xff800000; @$5 ld.global.v4.b32 {$0,$1,$2,$3}, [$4];", "=f,=f,=f,=f,l,b"(ptr addrspace(1) %v78, i1 %v76)
+  %v80 = extractvalue {float, float, float, float} %v79, 0
+  %v81 = extractvalue {float, float, float, float} %v79, 1
+  %v82 = extractvalue {float, float, float, float} %v79, 2
+  %v83 = extractvalue {float, float, float, float} %v79, 3
+  %v84 = call float @llvm.maxnum.f32(float %v23, float %v24)
+  %v85 = call float @llvm.maxnum.f32(float %v25, float %v26)
+  %v86 = call float @llvm.maxnum.f32(float %v31, float %v32)
+  %v87 = call float @llvm.maxnum.f32(float %v33, float %v34)
+  %v88 = call float @llvm.maxnum.f32(float %v39, float %v40)
+  %v89 = call float @llvm.maxnum.f32(float %v41, float %v42)
+  %v90 = call float @llvm.maxnum.f32(float %v47, float %v48)
+  %v91 = call float @llvm.maxnum.f32(float %v49, float %v50)
+  %v92 = call float @llvm.maxnum.f32(float %v55, float %v56)
+  %v93 = call float @llvm.maxnum.f32(float %v57, float %v58)
+  %v94 = call float @llvm.maxnum.f32(float %v63, float %v64)
+  %v95 = call float @llvm.maxnum.f32(float %v65, float %v66)
+  %v96 = call float @llvm.maxnum.f32(float %v71, float %v72)
+  %v97 = call float @llvm.maxnum.f32(float %v73, float %v74)
+  %v98 = call float @llvm.maxnum.f32(float %v80, float %v81)
+  %v99 = call float @llvm.maxnum.f32(float %v82, float %v83)
+  %v100 = call float @llvm.maxnum.f32(float %v84, float %v85)
+  %v101 = call float @llvm.maxnum.f32(float %v86, float %v87)
+  %v102 = call float @llvm.maxnum.f32(float %v88, float %v89)
+  %v103 = call float @llvm.maxnum.f32(float %v90, float %v91)
+  %v104 = call float @llvm.maxnum.f32(float %v92, float %v93)
+  %v105 = call float @llvm.maxnum.f32(float %v94, float %v95)
+  %v106 = call float @llvm.maxnum.f32(float %v96, float %v97)
+  %v107 = call float @llvm.maxnum.f32(float %v98, float %v99)
+  %v108 = call float @llvm.maxnum.f32(float %v100, float %v101)
+  %v109 = call float @llvm.maxnum.f32(float %v102, float %v103)
+  %v110 = call float @llvm.maxnum.f32(float %v104, float %v105)
+  %v111 = call float @llvm.maxnum.f32(float %v106, float %v107)
+  %v112 = call float @llvm.maxnum.f32(float %v108, float %v109)
+  %v113 = call float @llvm.maxnum.f32(float %v110, float %v111)
+  %v114 = call float @llvm.maxnum.f32(float %v112, float %v113)
+  %v115 = bitcast float %v114 to i32
+  %v116 = call i32 @llvm.nvvm.shfl.sync.bfly.i32(i32 -1, i32 %v115, i32 16, i32 31)
+  %v117 = bitcast i32 %v116 to float
+  %v118 = call float @llvm.maxnum.f32(float %v114, float %v117)
+  %v119 = bitcast float %v118 to i32
+  %v120 = call i32 @llvm.nvvm.shfl.sync.bfly.i32(i32 -1, i32 %v119, i32 8, i32 31)
+  %v121 = bitcast i32 %v120 to float
+  %v122 = call float @llvm.maxnum.f32(float %v118, float %v121)
+  %v123 = bitcast float %v122 to i32
+  %v124 = call i32 @llvm.nvvm.shfl.sync.bfly.i32(i32 -1, i32 %v123, i32 4, i32 31)
+  %v125 = bitcast i32 %v124 to float
+  %v126 = call float @llvm.maxnum.f32(float %v122, float %v125)
+  %v127 = bitcast float %v126 to i32
+  %v128 = call i32 @llvm.nvvm.shfl.sync.bfly.i32(i32 -1, i32 %v127, i32 2, i32 31)
+  %v129 = bitcast i32 %v128 to float
+  %v130 = call float @llvm.maxnum.f32(float %v126, float %v129)
+  %v131 = bitcast float %v130 to i32
+  %v132 = call i32 @llvm.nvvm.shfl.sync.bfly.i32(i32 -1, i32 %v131, i32 1, i32 31)
+  %v133 = bitcast i32 %v132 to float
+  %v134 = call float @llvm.maxnum.f32(float %v130, float %v133)
+  call void asm sideeffect "@$2 st.shared.b32 [$0], $1;", "r,f,b"(ptr addrspace(3) %v17, float %v134, i1 %v18)
+  call void @llvm.nvvm.barrier0()
+  %v135 = add i32 %v16, 0
+  %v136 = getelementptr float, ptr addrspace(3) @global_smem, i32 %v135
+  %v137 = load volatile float, ptr addrspace(3) %v136, align 4
+  %v138 = add i32 %v16, 1
+  %v139 = getelementptr float, ptr addrspace(3) @global_smem, i32 %v138
+  %v140 = load volatile float, ptr addrspace(3) %v139, align 4
+  %v141 = add i32 %v16, 2
+  %v142 = getelementptr float, ptr addrspace(3) @global_smem, i32 %v141
+  %v143 = load volatile float, ptr addrspace(3) %v142, align 4
+  %v144 = add i32 %v16, 3
+  %v145 = getelementptr float, ptr addrspace(3) @global_smem, i32 %v144
+  %v146 = load volatile float, ptr addrspace(3) %v145, align 4
+  %v147 = call float @llvm.maxnum.f32(float %v137, float %v140)
+  %v148 = call float @llvm.maxnum.f32(float %v143, float %v146)
+  %v149 = call float @llvm.maxnum.f32(float %v147, float %v148)
+  call void @llvm.nvvm.barrier0()
+  %v150 = fsub float %v23, %v149
+  %v151 = fmul float %v150, 0x3FF7154760000000
+  %v152 = call float @llvm.nvvm.ex2.approx.f32(float %v151)
+  %v153 = fsub float %v24, %v149
+  %v154 = fmul float %v153, 0x3FF7154760000000
+  %v155 = call float @llvm.nvvm.ex2.approx.f32(float %v154)
+  %v156 = fsub float %v25, %v149
+  %v157 = fmul float %v156, 0x3FF7154760000000
+  %v158 = call float @llvm.nvvm.ex2.approx.f32(float %v157)
+  %v159 = fsub float %v26, %v149
+  %v160 = fmul float %v159, 0x3FF7154760000000
+  %v161 = call float @llvm.nvvm.ex2.approx.f32(float %v160)
+  %v162 = fsub float %v31, %v149
+  %v163 = fmul float %v162, 0x3FF7154760000000
+  %v164 = call float @llvm.nvvm.ex2.approx.f32(float %v163)
+  %v165 = fsub float %v32, %v149
+  %v166 = fmul float %v165, 0x3FF7154760000000
+  %v167 = call float @llvm.nvvm.ex2.approx.f32(float %v166)
+  %v168 = fsub float %v33, %v149
+  %v169 = fmul float %v168, 0x3FF7154760000000
+  %v170 = call float @llvm.nvvm.ex2.approx.f32(float %v169)
+  %v171 = fsub float %v34, %v149
+  %v172 = fmul float %v171, 0x3FF7154760000000
+  %v173 = call float @llvm.nvvm.ex2.approx.f32(float %v172)
+  %v174 = fsub float %v39, %v149
+  %v175 = fmul float %v174, 0x3FF7154760000000
+  %v176 = call float @llvm.nvvm.ex2.approx.f32(float %v175)
+  %v177 = fsub float %v40, %v149
+  %v178 = fmul float %v177, 0x3FF7154760000000
+  %v179 = call float @llvm.nvvm.ex2.approx.f32(float %v178)
+  %v180 = fsub float %v41, %v149
+  %v181 = fmul float %v180, 0x3FF7154760000000
+  %v182 = call float @llvm.nvvm.ex2.approx.f32(float %v181)
+  %v183 = fsub float %v42, %v149
+  %v184 = fmul float %v183, 0x3FF7154760000000
+  %v185 = call float @llvm.nvvm.ex2.approx.f32(float %v184)
+  %v186 = fsub float %v47, %v149
+  %v187 = fmul float %v186, 0x3FF7154760000000
+  %v188 = call float @llvm.nvvm.ex2.approx.f32(float %v187)
+  %v189 = fsub float %v48, %v149
+  %v190 = fmul float %v189, 0x3FF7154760000000
+  %v191 = call float @llvm.nvvm.ex2.approx.f32(float %v190)
+  %v192 = fsub float %v49, %v149
+  %v193 = fmul float %v192, 0x3FF7154760000000
+  %v194 = call float @llvm.nvvm.ex2.approx.f32(float %v193)
+  %v195 = fsub float %v50, %v149
+  %v196 = fmul float %v195, 0x3FF7154760000000
+  %v197 = call float @llvm.nvvm.ex2.approx.f32(float %v196)
+  %v198 = fsub float %v55, %v149
+  %v199 = fmul float %v198, 0x3FF7154760000000
+  %v200 = call float @llvm.nvvm.ex2.approx.f32(float %v199)
+  %v201 = fsub float %v56, %v149
+  %v202 = fmul float %v201, 0x3FF7154760000000
+  %v203 = call float @llvm.nvvm.ex2.approx.f32(float %v202)
+  %v204 = fsub float %v57, %v149
+  %v205 = fmul float %v204, 0x3FF7154760000000
+  %v206 = call float @llvm.nvvm.ex2.approx.f32(float %v205)
+  %v207 = fsub float %v58, %v149
+  %v208 = fmul float %v207, 0x3FF7154760000000
+  %v209 = call float @llvm.nvvm.ex2.approx.f32(float %v208)
+  %v210 = fsub float %v63, %v149
+  %v211 = fmul float %v210, 0x3FF7154760000000
+  %v212 = call float @llvm.nvvm.ex2.approx.f32(float %v211)
+  %v213 = fsub float %v64, %v149
+  %v214 = fmul float %v213, 0x3FF7154760000000
+  %v215 = call float @llvm.nvvm.ex2.approx.f32(float %v214)
+  %v216 = fsub float %v65, %v149
+  %v217 = fmul float %v216, 0x3FF7154760000000
+  %v218 = call float @llvm.nvvm.ex2.approx.f32(float %v217)
+  %v219 = fsub float %v66, %v149
+  %v220 = fmul float %v219, 0x3FF7154760000000
+  %v221 = call float @llvm.nvvm.ex2.approx.f32(float %v220)
+  %v222 = fsub float %v71, %v149
+  %v223 = fmul float %v222, 0x3FF7154760000000
+  %v224 = call float @llvm.nvvm.ex2.approx.f32(float %v223)
+  %v225 = fsub float %v72, %v149
+  %v226 = fmul float %v225, 0x3FF7154760000000
+  %v227 = call float @llvm.nvvm.ex2.approx.f32(float %v226)
+  %v228 = fsub float %v73, %v149
+  %v229 = fmul float %v228, 0x3FF7154760000000
+  %v230 = call float @llvm.nvvm.ex2.approx.f32(float %v229)
+  %v231 = fsub float %v74, %v149
+  %v232 = fmul float %v231, 0x3FF7154760000000
+  %v233 = call float @llvm.nvvm.ex2.approx.f32(float %v232)
+  %v234 = fsub float %v80, %v149
+  %v235 = fmul float %v234, 0x3FF7154760000000
+  %v236 = call float @llvm.nvvm.ex2.approx.f32(float %v235)
+  %v237 = fsub float %v81, %v149
+  %v238 = fmul float %v237, 0x3FF7154760000000
+  %v239 = call float @llvm.nvvm.ex2.approx.f32(float %v238)
+  %v240 = fsub float %v82, %v149
+  %v241 = fmul float %v240, 0x3FF7154760000000
+  %v242 = call float @llvm.nvvm.ex2.approx.f32(float %v241)
+  %v243 = fsub float %v83, %v149
+  %v244 = fmul float %v243, 0x3FF7154760000000
+  %v245 = call float @llvm.nvvm.ex2.approx.f32(float %v244)
+  %v246 = fadd float %v152, %v155
+  %v247 = fadd float %v158, %v161
+  %v248 = fadd float %v164, %v167
+  %v249 = fadd float %v170, %v173
+  %v250 = fadd float %v176, %v179
+  %v251 = fadd float %v182, %v185
+  %v252 = fadd float %v188, %v191
+  %v253 = fadd float %v194, %v197
+  %v254 = fadd float %v200, %v203
+  %v255 = fadd float %v206, %v209
+  %v256 = fadd float %v212, %v215
+  %v257 = fadd float %v218, %v221
+  %v258 = fadd float %v224, %v227
+  %v259 = fadd float %v230, %v233
+  %v260 = fadd float %v236, %v239
+  %v261 = fadd float %v242, %v245
+  %v262 = fadd float %v246, %v247
+  %v263 = fadd float %v248, %v249
+  %v264 = fadd float %v250, %v251
+  %v265 = fadd float %v252, %v253
+  %v266 = fadd float %v254, %v255
+  %v267 = fadd float %v256, %v257
+  %v268 = fadd float %v258, %v259
+  %v269 = fadd float %v260, %v261
+  %v270 = fadd float %v262, %v263
+  %v271 = fadd float %v264, %v265
+  %v272 = fadd float %v266, %v267
+  %v273 = fadd float %v268, %v269
+  %v274 = fadd float %v270, %v271
+  %v275 = fadd float %v272, %v273
+  %v276 = fadd float %v274, %v275
+  %v277 = bitcast float %v276 to i32
+  %v278 = call i32 @llvm.nvvm.shfl.sync.bfly.i32(i32 -1, i32 %v277, i32 16, i32 31)
+  %v279 = bitcast i32 %v278 to float
+  %v280 = fadd float %v276, %v279
+  %v281 = bitcast float %v280 to i32
+  %v282 = call i32 @llvm.nvvm.shfl.sync.bfly.i32(i32 -1, i32 %v281, i32 8, i32 31)
+  %v283 = bitcast i32 %v282 to float
+  %v284 = fadd float %v280, %v283
+  %v285 = bitcast float %v284 to i32
+  %v286 = call i32 @llvm.nvvm.shfl.sync.bfly.i32(i32 -1, i32 %v285, i32 4, i32 31)
+  %v287 = bitcast i32 %v286 to float
+  %v288 = fadd float %v284, %v287
+  %v289 = bitcast float %v288 to i32
+  %v290 = call i32 @llvm.nvvm.shfl.sync.bfly.i32(i32 -1, i32 %v289, i32 2, i32 31)
+  %v291 = bitcast i32 %v290 to float
+  %v292 = fadd float %v288, %v291
+  %v293 = bitcast float %v292 to i32
+  %v294 = call i32 @llvm.nvvm.shfl.sync.bfly.i32(i32 -1, i32 %v293, i32 1, i32 31)
+  %v295 = bitcast i32 %v294 to float
+  %v296 = fadd float %v292, %v295
+  call void asm sideeffect "@$2 st.shared.b32 [$0], $1;", "r,f,b"(ptr addrspace(3) %v17, float %v296, i1 %v18)
+  call void @llvm.nvvm.barrier0()
+  %v297 = add i32 %v16, 0
+  %v298 = getelementptr float, ptr addrspace(3) @global_smem, i32 %v297
+  %v299 = load volatile float, ptr addrspace(3) %v298, align 4
+  %v300 = add i32 %v16, 1
+  %v301 = getelementptr float, ptr addrspace(3) @global_smem, i32 %v300
+  %v302 = load volatile float, ptr addrspace(3) %v301, align 4
+  %v303 = add i32 %v16, 2
+  %v304 = getelementptr float, ptr addrspace(3) @global_smem, i32 %v303
+  %v305 = load volatile float, ptr addrspace(3) %v304, align 4
+  %v306 = add i32 %v16, 3
+  %v307 = getelementptr float, ptr addrspace(3) @global_smem, i32 %v306
+  %v308 = load volatile float, ptr addrspace(3) %v307, align 4
+  %v309 = fadd float %v299, %v302
+  %v310 = fadd float %v305, %v308
+  %v311 = fadd float %v309, %v310
+  call void @llvm.nvvm.barrier0()
+  %v312 = call float asm "rcp.approx.ftz.f32 $0, $1;", "=f,f"(float %v311)
+  %v313 = getelementptr float, ptr addrspace(1) %v13, i64 %v20
+  %v314 = fmul float %v152, %v312
+  %v315 = fmul float %v155, %v312
+  %v316 = fmul float %v158, %v312
+  %v317 = fmul float %v161, %v312
+  call void asm sideeffect "st.global.v4.b32 [$4], {$0,$1,$2,$3};", "f,f,f,f,l"(float %v314, float %v315, float %v316, float %v317, ptr addrspace(1) %v313)
+  %v318 = getelementptr float, ptr addrspace(1) %v13, i64 %v28
+  %v319 = fmul float %v164, %v312
+  %v320 = fmul float %v167, %v312
+  %v321 = fmul float %v170, %v312
+  %v322 = fmul float %v173, %v312
+  call void asm sideeffect "st.global.v4.b32 [$4], {$0,$1,$2,$3};", "f,f,f,f,l"(float %v319, float %v320, float %v321, float %v322, ptr addrspace(1) %v318)
+  %v323 = getelementptr float, ptr addrspace(1) %v13, i64 %v36
+  %v324 = fmul float %v176, %v312
+  %v325 = fmul float %v179, %v312
+  %v326 = fmul float %v182, %v312
+  %v327 = fmul float %v185, %v312
+  call void asm sideeffect "st.global.v4.b32 [$4], {$0,$1,$2,$3};", "f,f,f,f,l"(float %v324, float %v325, float %v326, float %v327, ptr addrspace(1) %v323)
+  %v328 = getelementptr float, ptr addrspace(1) %v13, i64 %v44
+  %v329 = fmul float %v188, %v312
+  %v330 = fmul float %v191, %v312
+  %v331 = fmul float %v194, %v312
+  %v332 = fmul float %v197, %v312
+  call void asm sideeffect "st.global.v4.b32 [$4], {$0,$1,$2,$3};", "f,f,f,f,l"(float %v329, float %v330, float %v331, float %v332, ptr addrspace(1) %v328)
+  %v333 = getelementptr float, ptr addrspace(1) %v13, i64 %v52
+  %v334 = fmul float %v200, %v312
+  %v335 = fmul float %v203, %v312
+  %v336 = fmul float %v206, %v312
+  %v337 = fmul float %v209, %v312
+  call void asm sideeffect "st.global.v4.b32 [$4], {$0,$1,$2,$3};", "f,f,f,f,l"(float %v334, float %v335, float %v336, float %v337, ptr addrspace(1) %v333)
+  %v338 = getelementptr float, ptr addrspace(1) %v13, i64 %v60
+  %v339 = fmul float %v212, %v312
+  %v340 = fmul float %v215, %v312
+  %v341 = fmul float %v218, %v312
+  %v342 = fmul float %v221, %v312
+  call void asm sideeffect "st.global.v4.b32 [$4], {$0,$1,$2,$3};", "f,f,f,f,l"(float %v339, float %v340, float %v341, float %v342, ptr addrspace(1) %v338)
+  %v343 = getelementptr float, ptr addrspace(1) %v13, i64 %v68
+  %v344 = fmul float %v224, %v312
+  %v345 = fmul float %v227, %v312
+  %v346 = fmul float %v230, %v312
+  %v347 = fmul float %v233, %v312
+  call void asm sideeffect "st.global.v4.b32 [$4], {$0,$1,$2,$3};", "f,f,f,f,l"(float %v344, float %v345, float %v346, float %v347, ptr addrspace(1) %v343)
+  %v348 = getelementptr float, ptr addrspace(1) %v13, i64 %v77
+  %v349 = fmul float %v236, %v312
+  %v350 = fmul float %v239, %v312
+  %v351 = fmul float %v242, %v312
+  %v352 = fmul float %v245, %v312
+  call void asm sideeffect "@$5 st.global.v4.b32 [$4], {$0,$1,$2,$3};", "f,f,f,f,l,b"(float %v349, float %v350, float %v351, float %v352, ptr addrspace(1) %v348, i1 %v76)
+  br label %exit
+exit:
+  ret void
+}
+declare i32 @llvm.nvvm.read.ptx.sreg.tid.x()
+declare i32 @llvm.nvvm.read.ptx.sreg.ctaid.x()
+declare float @llvm.maxnum.f32(float, float)
+declare i32 @llvm.nvvm.shfl.sync.bfly.i32(i32, i32, i32, i32)
+declare float @llvm.nvvm.ex2.approx.f32(float)
+declare void @llvm.nvvm.barrier0()
+attributes #0 = { nounwind "nvvm.reqntid"="128" "nvvm.maxnreg"="128" }

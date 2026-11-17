@@ -1,0 +1,3 @@
+- triton_softmax.py 中进行了benchmark的测试，测试覆盖了多组shape
+- 将不同shape下编译的llvm ir拿出来，改写llvm ir，优化性能表现
+- 在所有的测试shape下性能相比triton_softmax.py整体快30%

@@ -1,0 +1,436 @@
+[
+  {
+    "cols": 1024,
+    "row_threads": 32,
+    "threads": 128,
+    "us": 15.32800029963255,
+    "registers": 48
+  },
+  {
+    "cols": 1024,
+    "row_threads": 32,
+    "threads": 256,
+    "us": 15.296000055968761,
+    "registers": 47
+  },
+  {
+    "cols": 1024,
+    "row_threads": 64,
+    "threads": 128,
+    "us": 15.135999768972397,
+    "registers": 32
+  },
+  {
+    "cols": 1024,
+    "row_threads": 64,
+    "threads": 256,
+    "us": 15.39199985563755,
+    "registers": 32
+  },
+  {
+    "cols": 1024,
+    "row_threads": 64,
+    "threads": 512,
+    "us": 15.807999297976494,
+    "registers": 32
+  },
+  {
+    "cols": 1024,
+    "row_threads": 128,
+    "threads": 128,
+    "us": 15.647999942302704,
+    "registers": 23
+  },
+  {
+    "cols": 1024,
+    "row_threads": 128,
+    "threads": 256,
+    "us": 15.776000916957855,
+    "registers": 25
+  },
+  {
+    "cols": 1024,
+    "row_threads": 128,
+    "threads": 512,
+    "us": 17.311999574303627,
+    "registers": 25
+  },
+  {
+    "cols": 1024,
+    "row_threads": 256,
+    "threads": 256,
+    "us": 19.168000668287277,
+    "registers": 19
+  },
+  {
+    "cols": 1024,
+    "row_threads": 256,
+    "threads": 512,
+    "us": 21.056000143289566,
+    "registers": 22
+  },
+  {
+    "cols": 2048,
+    "row_threads": 32,
+    "threads": 128,
+    "us": 25.567999109625816,
+    "registers": 89
+  },
+  {
+    "cols": 2048,
+    "row_threads": 32,
+    "threads": 256,
+    "us": 26.048000901937485,
+    "registers": 92
+  },
+  {
+    "cols": 2048,
+    "row_threads": 64,
+    "threads": 128,
+    "us": 25.631999596953392,
+    "registers": 52
+  },
+  {
+    "cols": 2048,
+    "row_threads": 64,
+    "threads": 256,
+    "us": 25.82399919629097,
+    "registers": 51
+  },
+  {
+    "cols": 2048,
+    "row_threads": 64,
+    "threads": 512,
+    "us": 26.976000517606735,
+    "registers": 51
+  },
+  {
+    "cols": 2048,
+    "row_threads": 128,
+    "threads": 128,
+    "us": 24.70399998128414,
+    "registers": 31
+  },
+  {
+    "cols": 2048,
+    "row_threads": 128,
+    "threads": 256,
+    "us": 25.248000398278236,
+    "registers": 32
+  },
+  {
+    "cols": 2048,
+    "row_threads": 128,
+    "threads": 512,
+    "us": 25.599999353289604,
+    "registers": 32
+  },
+  {
+    "cols": 2048,
+    "row_threads": 256,
+    "threads": 256,
+    "us": 26.048000901937485,
+    "registers": 24
+  },
+  {
+    "cols": 2048,
+    "row_threads": 256,
+    "threads": 512,
+    "us": 27.59999968111515,
+    "registers": 26
+  },
+  {
+    "cols": 4096,
+    "row_threads": 32,
+    "threads": 128,
+    "us": 45.184001326560974,
+    "registers": 162
+  },
+  {
+    "cols": 4096,
+    "row_threads": 32,
+    "threads": 256,
+    "us": 59.039998799562454,
+    "registers": 166
+  },
+  {
+    "cols": 4096,
+    "row_threads": 64,
+    "threads": 128,
+    "us": 44.28799822926521,
+    "registers": 100
+  },
+  {
+    "cols": 4096,
+    "row_threads": 64,
+    "threads": 256,
+    "us": 48.22399839758873,
+    "registers": 100
+  },
+  {
+    "cols": 4096,
+    "row_threads": 64,
+    "threads": 512,
+    "us": 58.20799991488457,
+    "registers": 95
+  },
+  {
+    "cols": 4096,
+    "row_threads": 128,
+    "threads": 128,
+    "us": 43.776001781225204,
+    "registers": 48
+  },
+  {
+    "cols": 4096,
+    "row_threads": 128,
+    "threads": 256,
+    "us": 43.99999976158142,
+    "registers": 51
+  },
+  {
+    "cols": 4096,
+    "row_threads": 128,
+    "threads": 512,
+    "us": 45.27999833226204,
+    "registers": 51
+  },
+  {
+    "cols": 4096,
+    "row_threads": 256,
+    "threads": 256,
+    "us": 44.015999883413315,
+    "registers": 32
+  },
+  {
+    "cols": 4096,
+    "row_threads": 256,
+    "threads": 512,
+    "us": 44.28799822926521,
+    "registers": 32
+  },
+  {
+    "cols": 6144,
+    "row_threads": 64,
+    "threads": 128,
+    "us": 66.0799965262413,
+    "registers": 140
+  },
+  {
+    "cols": 6144,
+    "row_threads": 64,
+    "threads": 256,
+    "us": 94.36800330877304,
+    "registers": 141
+  },
+  {
+    "cols": 6144,
+    "row_threads": 64,
+    "threads": 512,
+    "us": 78.36800068616867,
+    "registers": 126
+  },
+  {
+    "cols": 6144,
+    "row_threads": 128,
+    "threads": 128,
+    "us": 62.6240000128746,
+    "registers": 71
+  },
+  {
+    "cols": 6144,
+    "row_threads": 128,
+    "threads": 256,
+    "us": 62.912002205848694,
+    "registers": 71
+  },
+  {
+    "cols": 6144,
+    "row_threads": 128,
+    "threads": 512,
+    "us": 83.26400071382523,
+    "registers": 73
+  },
+  {
+    "cols": 6144,
+    "row_threads": 256,
+    "threads": 256,
+    "us": 62.04799935221672,
+    "registers": 46
+  },
+  {
+    "cols": 6144,
+    "row_threads": 256,
+    "threads": 512,
+    "us": 67.11999699473381,
+    "registers": 46
+  },
+  {
+    "cols": 8192,
+    "row_threads": 64,
+    "threads": 128,
+    "us": 84.48000252246857,
+    "registers": 162
+  },
+  {
+    "cols": 8192,
+    "row_threads": 64,
+    "threads": 256,
+    "us": 117.0239970088005,
+    "registers": 163
+  },
+  {
+    "cols": 8192,
+    "row_threads": 64,
+    "threads": 512,
+    "us": 138.14400136470795,
+    "registers": 128
+  },
+  {
+    "cols": 8192,
+    "row_threads": 128,
+    "threads": 128,
+    "us": 81.34400099515915,
+    "registers": 106
+  },
+  {
+    "cols": 8192,
+    "row_threads": 128,
+    "threads": 256,
+    "us": 87.87199854850769,
+    "registers": 100
+  },
+  {
+    "cols": 8192,
+    "row_threads": 128,
+    "threads": 512,
+    "us": 103.04000228643417,
+    "registers": 95
+  },
+  {
+    "cols": 8192,
+    "row_threads": 256,
+    "threads": 256,
+    "us": 81.11999928951263,
+    "registers": 48
+  },
+  {
+    "cols": 8192,
+    "row_threads": 256,
+    "threads": 512,
+    "us": 82.71999657154083,
+    "registers": 52
+  },
+  {
+    "cols": 8320,
+    "row_threads": 64,
+    "threads": 128,
+    "us": 85.40800213813782,
+    "registers": 166
+  },
+  {
+    "cols": 8320,
+    "row_threads": 64,
+    "threads": 256,
+    "us": 117.60000139474869,
+    "registers": 167
+  },
+  {
+    "cols": 8320,
+    "row_threads": 64,
+    "threads": 512,
+    "us": 148.3840048313141,
+    "registers": 128
+  },
+  {
+    "cols": 8320,
+    "row_threads": 128,
+    "threads": 128,
+    "us": 82.36800134181976,
+    "registers": 106
+  },
+  {
+    "cols": 8320,
+    "row_threads": 128,
+    "threads": 256,
+    "us": 89.03999999165535,
+    "registers": 101
+  },
+  {
+    "cols": 8320,
+    "row_threads": 128,
+    "threads": 512,
+    "us": 104.41599786281586,
+    "registers": 95
+  },
+  {
+    "cols": 8320,
+    "row_threads": 256,
+    "threads": 256,
+    "us": 82.04799890518188,
+    "registers": 55
+  },
+  {
+    "cols": 8320,
+    "row_threads": 256,
+    "threads": 512,
+    "us": 84.03199911117554,
+    "registers": 55
+  },
+  {
+    "cols": 12672,
+    "row_threads": 64,
+    "threads": 128,
+    "us": 145.1520025730133,
+    "registers": 246
+  },
+  {
+    "cols": 12672,
+    "row_threads": 64,
+    "threads": 256,
+    "us": 164.0320047736168,
+    "registers": 246
+  },
+  {
+    "cols": 12672,
+    "row_threads": 64,
+    "threads": 512,
+    "us": 728.6079823970795,
+    "registers": 32
+  },
+  {
+    "cols": 12672,
+    "row_threads": 128,
+    "threads": 128,
+    "us": 126.52799487113953,
+    "registers": 147
+  },
+  {
+    "cols": 12672,
+    "row_threads": 128,
+    "threads": 256,
+    "us": 179.1199967265129,
+    "registers": 145
+  },
+  {
+    "cols": 12672,
+    "row_threads": 128,
+    "threads": 512,
+    "us": 141.12000167369843,
+    "registers": 126
+  },
+  {
+    "cols": 12672,
+    "row_threads": 256,
+    "threads": 256,
+    "us": 141.56800508499146,
+    "registers": 83
+  },
+  {
+    "cols": 12672,
+    "row_threads": 256,
+    "threads": 512,
+    "us": 162.23999857902527,
+    "registers": 77
+  }
+]

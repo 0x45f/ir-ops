@@ -1,0 +1,194 @@
+[
+  {
+    "cols": 2048,
+    "quantized": false,
+    "compressed": false,
+    "us": 24.224000051617622,
+    "error": 7.450580596923828e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 2048,
+    "quantized": false,
+    "compressed": true,
+    "us": 24.159999564290047,
+    "error": 7.450580596923828e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 2048,
+    "quantized": true,
+    "compressed": false,
+    "us": 24.25600029528141,
+    "error": 1.2014061212539673e-07,
+    "sum_error": 1.3113021850585938e-05
+  },
+  {
+    "cols": 2048,
+    "quantized": true,
+    "compressed": true,
+    "us": 24.191999807953835,
+    "error": 1.2014061212539673e-07,
+    "sum_error": 1.3113021850585938e-05
+  },
+  {
+    "cols": 4096,
+    "quantized": false,
+    "compressed": false,
+    "us": 43.2640016078949,
+    "error": 3.725290298461914e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 4096,
+    "quantized": false,
+    "compressed": true,
+    "us": 43.07200014591217,
+    "error": 3.725290298461914e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 4096,
+    "quantized": true,
+    "compressed": false,
+    "us": 43.007999658584595,
+    "error": 1.2014061212539673e-07,
+    "sum_error": 1.5974044799804688e-05
+  },
+  {
+    "cols": 4096,
+    "quantized": true,
+    "compressed": true,
+    "us": 43.2640016078949,
+    "error": 1.2014061212539673e-07,
+    "sum_error": 1.5974044799804688e-05
+  },
+  {
+    "cols": 6144,
+    "quantized": false,
+    "compressed": false,
+    "us": 61.5679994225502,
+    "error": 2.7939677238464355e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 6144,
+    "quantized": false,
+    "compressed": true,
+    "us": 61.184000223875046,
+    "error": 2.7939677238464355e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 6144,
+    "quantized": true,
+    "compressed": false,
+    "us": 61.535999178886414,
+    "error": 1.1955853551626205e-07,
+    "sum_error": 1.9550323486328125e-05
+  },
+  {
+    "cols": 6144,
+    "quantized": true,
+    "compressed": true,
+    "us": 61.5679994225502,
+    "error": 1.1955853551626205e-07,
+    "sum_error": 1.9550323486328125e-05
+  },
+  {
+    "cols": 8192,
+    "quantized": false,
+    "compressed": false,
+    "us": 81.11999928951263,
+    "error": 1.862645149230957e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 8192,
+    "quantized": false,
+    "compressed": true,
+    "us": 80.83199709653854,
+    "error": 1.862645149230957e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 8192,
+    "quantized": true,
+    "compressed": false,
+    "us": 81.28000050783157,
+    "error": 1.2014061212539673e-07,
+    "sum_error": 2.193450927734375e-05
+  },
+  {
+    "cols": 8192,
+    "quantized": true,
+    "compressed": true,
+    "us": 80.9599980711937,
+    "error": 1.2014061212539673e-07,
+    "sum_error": 2.193450927734375e-05
+  },
+  {
+    "cols": 8320,
+    "quantized": false,
+    "compressed": false,
+    "us": 81.727996468544,
+    "error": 1.3969838619232178e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 8320,
+    "quantized": false,
+    "compressed": true,
+    "us": 81.66400343179703,
+    "error": 1.3969838619232178e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 8320,
+    "quantized": true,
+    "compressed": false,
+    "us": 81.98399841785431,
+    "error": 1.19674950838089e-07,
+    "sum_error": 2.4318695068359375e-05
+  },
+  {
+    "cols": 8320,
+    "quantized": true,
+    "compressed": true,
+    "us": 81.60000294446945,
+    "error": 1.19674950838089e-07,
+    "sum_error": 2.4318695068359375e-05
+  },
+  {
+    "cols": 12672,
+    "quantized": false,
+    "compressed": false,
+    "us": 120.70400267839432,
+    "error": 1.862645149230957e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 12672,
+    "quantized": false,
+    "compressed": true,
+    "us": 121.0399977862835,
+    "error": 1.862645149230957e-09,
+    "sum_error": 2.384185791015625e-07
+  },
+  {
+    "cols": 12672,
+    "quantized": true,
+    "compressed": false,
+    "us": 121.21599912643433,
+    "error": 1.1944212019443512e-07,
+    "sum_error": 2.765655517578125e-05
+  },
+  {
+    "cols": 12672,
+    "quantized": true,
+    "compressed": true,
+    "us": 120.7360029220581,
+    "error": 1.1944212019443512e-07,
+    "sum_error": 2.765655517578125e-05
+  }
+]

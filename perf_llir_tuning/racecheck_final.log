@@ -1,0 +1,15 @@
+========= COMPUTE-SANITIZER
+test_compiles_saved_ir_to_cuda_binary (test_softmax_llir.SoftmaxLlirTest.test_compiles_saved_ir_to_cuda_binary) ... ok
+test_contiguous_input_with_unaligned_storage_offset (test_softmax_llir.SoftmaxLlirTest.test_contiguous_input_with_unaligned_storage_offset) ... ok
+test_empty_rows (test_softmax_llir.SoftmaxLlirTest.test_empty_rows) ... ok
+test_input_on_noncurrent_device (test_softmax_llir.SoftmaxLlirTest.test_input_on_noncurrent_device) ... skipped 'Two visible GPUs required'
+test_matches_torch_for_multiple_shapes (test_softmax_llir.SoftmaxLlirTest.test_matches_torch_for_multiple_shapes) ... ok
+test_nondefault_stream (test_softmax_llir.SoftmaxLlirTest.test_nondefault_stream) ... ok
+test_reduction_boundaries_and_extreme_values (test_softmax_llir.SoftmaxLlirTest.test_reduction_boundaries_and_extreme_values) ... ok
+test_rejects_unsupported_inputs (test_softmax_llir.SoftmaxLlirTest.test_rejects_unsupported_inputs) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 40.589s
+
+OK (skipped=1)
+========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)

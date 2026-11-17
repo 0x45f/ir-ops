@@ -1,0 +1,398 @@
+[
+  {
+    "cols": 2048,
+    "threads": 64,
+    "us": 24.064000695943832,
+    "registers": 50
+  },
+  {
+    "cols": 2048,
+    "threads": 96,
+    "us": 24.12799932062626,
+    "registers": 40
+  },
+  {
+    "cols": 2048,
+    "threads": 128,
+    "us": 24.09599907696247,
+    "registers": 31
+  },
+  {
+    "cols": 2048,
+    "threads": 192,
+    "us": 24.57600086927414,
+    "registers": 27
+  },
+  {
+    "cols": 2048,
+    "threads": 256,
+    "us": 25.567999109625816,
+    "registers": 24
+  },
+  {
+    "cols": 2048,
+    "threads": 320,
+    "us": 29.120000079274178,
+    "registers": 25
+  },
+  {
+    "cols": 2048,
+    "threads": 384,
+    "us": 31.936001032590866,
+    "registers": 27
+  },
+  {
+    "cols": 2048,
+    "threads": 512,
+    "us": 38.2080003619194,
+    "registers": 26
+  },
+  {
+    "cols": 2048,
+    "threads": 640,
+    "us": 52.000001072883606,
+    "registers": 29
+  },
+  {
+    "cols": 2048,
+    "threads": 768,
+    "us": 69.50400024652481,
+    "registers": 34
+  },
+  {
+    "cols": 2048,
+    "threads": 1024,
+    "us": 94.83199939131737,
+    "registers": 30
+  },
+  {
+    "cols": 4096,
+    "threads": 64,
+    "us": 43.776001781225204,
+    "registers": 93
+  },
+  {
+    "cols": 4096,
+    "threads": 96,
+    "us": 43.136000633239746,
+    "registers": 72
+  },
+  {
+    "cols": 4096,
+    "threads": 128,
+    "us": 43.07200014591217,
+    "registers": 50
+  },
+  {
+    "cols": 4096,
+    "threads": 192,
+    "us": 43.2640016078949,
+    "registers": 40
+  },
+  {
+    "cols": 4096,
+    "threads": 256,
+    "us": 43.2640016078949,
+    "registers": 32
+  },
+  {
+    "cols": 4096,
+    "threads": 320,
+    "us": 43.39199885725975,
+    "registers": 32
+  },
+  {
+    "cols": 4096,
+    "threads": 384,
+    "us": 45.504000037908554,
+    "registers": 32
+  },
+  {
+    "cols": 4096,
+    "threads": 512,
+    "us": 50.71999877691269,
+    "registers": 31
+  },
+  {
+    "cols": 4096,
+    "threads": 640,
+    "us": 63.90400230884552,
+    "registers": 30
+  },
+  {
+    "cols": 4096,
+    "threads": 768,
+    "us": 85.66399663686752,
+    "registers": 37
+  },
+  {
+    "cols": 4096,
+    "threads": 1024,
+    "us": 104.8320010304451,
+    "registers": 30
+  },
+  {
+    "cols": 6144,
+    "threads": 64,
+    "us": 61.664000153541565,
+    "registers": 128
+  },
+  {
+    "cols": 6144,
+    "threads": 96,
+    "us": 64.60800021886826,
+    "registers": 94
+  },
+  {
+    "cols": 6144,
+    "threads": 128,
+    "us": 61.59999966621399,
+    "registers": 72
+  },
+  {
+    "cols": 6144,
+    "threads": 192,
+    "us": 61.47199869155884,
+    "registers": 47
+  },
+  {
+    "cols": 6144,
+    "threads": 256,
+    "us": 61.37600168585777,
+    "registers": 39
+  },
+  {
+    "cols": 6144,
+    "threads": 320,
+    "us": 62.81600147485733,
+    "registers": 34
+  },
+  {
+    "cols": 6144,
+    "threads": 384,
+    "us": 61.85600161552429,
+    "registers": 32
+  },
+  {
+    "cols": 6144,
+    "threads": 512,
+    "us": 64.57599997520447,
+    "registers": 30
+  },
+  {
+    "cols": 6144,
+    "threads": 640,
+    "us": 76.67200267314911,
+    "registers": 30
+  },
+  {
+    "cols": 6144,
+    "threads": 768,
+    "us": 94.30400282144547,
+    "registers": 37
+  },
+  {
+    "cols": 6144,
+    "threads": 1024,
+    "us": 120.35199999809265,
+    "registers": 31
+  },
+  {
+    "cols": 8192,
+    "threads": 64,
+    "us": 81.05599880218506,
+    "registers": 160
+  },
+  {
+    "cols": 8192,
+    "threads": 96,
+    "us": 81.31200075149536,
+    "registers": 118
+  },
+  {
+    "cols": 8192,
+    "threads": 128,
+    "us": 81.24800026416779,
+    "registers": 92
+  },
+  {
+    "cols": 8192,
+    "threads": 192,
+    "us": 81.28000050783157,
+    "registers": 62
+  },
+  {
+    "cols": 8192,
+    "threads": 256,
+    "us": 81.05599880218506,
+    "registers": 50
+  },
+  {
+    "cols": 8192,
+    "threads": 320,
+    "us": 81.15199953317642,
+    "registers": 46
+  },
+  {
+    "cols": 8192,
+    "threads": 384,
+    "us": 81.05599880218506,
+    "registers": 40
+  },
+  {
+    "cols": 8192,
+    "threads": 512,
+    "us": 81.37600123882294,
+    "registers": 32
+  },
+  {
+    "cols": 8192,
+    "threads": 640,
+    "us": 90.7839983701706,
+    "registers": 32
+  },
+  {
+    "cols": 8192,
+    "threads": 768,
+    "us": 110.75200140476227,
+    "registers": 40
+  },
+  {
+    "cols": 8192,
+    "threads": 1024,
+    "us": 128.06400656700134,
+    "registers": 31
+  },
+  {
+    "cols": 8320,
+    "threads": 64,
+    "us": 81.69600367546082,
+    "registers": 162
+  },
+  {
+    "cols": 8320,
+    "threads": 96,
+    "us": 81.69600367546082,
+    "registers": 118
+  },
+  {
+    "cols": 8320,
+    "threads": 128,
+    "us": 81.60000294446945,
+    "registers": 94
+  },
+  {
+    "cols": 8320,
+    "threads": 192,
+    "us": 81.87199756503105,
+    "registers": 62
+  },
+  {
+    "cols": 8320,
+    "threads": 256,
+    "us": 81.82399719953537,
+    "registers": 56
+  },
+  {
+    "cols": 8320,
+    "threads": 320,
+    "us": 81.91999793052673,
+    "registers": 46
+  },
+  {
+    "cols": 8320,
+    "threads": 384,
+    "us": 81.79199695587158,
+    "registers": 40
+  },
+  {
+    "cols": 8320,
+    "threads": 512,
+    "us": 86.11200004816055,
+    "registers": 34
+  },
+  {
+    "cols": 8320,
+    "threads": 640,
+    "us": 91.61599725484848,
+    "registers": 32
+  },
+  {
+    "cols": 8320,
+    "threads": 768,
+    "us": 111.68000102043152,
+    "registers": 40
+  },
+  {
+    "cols": 8320,
+    "threads": 1024,
+    "us": 135.5839967727661,
+    "registers": 30
+  },
+  {
+    "cols": 12672,
+    "threads": 64,
+    "us": 121.72800302505493,
+    "registers": 245
+  },
+  {
+    "cols": 12672,
+    "threads": 96,
+    "us": 121.08799815177917,
+    "registers": 162
+  },
+  {
+    "cols": 12672,
+    "threads": 128,
+    "us": 120.65600231289864,
+    "registers": 124
+  },
+  {
+    "cols": 12672,
+    "threads": 192,
+    "us": 120.99199742078781,
+    "registers": 94
+  },
+  {
+    "cols": 12672,
+    "threads": 256,
+    "us": 120.70400267839432,
+    "registers": 74
+  },
+  {
+    "cols": 12672,
+    "threads": 320,
+    "us": 120.70400267839432,
+    "registers": 58
+  },
+  {
+    "cols": 12672,
+    "threads": 384,
+    "us": 120.70400267839432,
+    "registers": 56
+  },
+  {
+    "cols": 12672,
+    "threads": 512,
+    "us": 130.8480054140091,
+    "registers": 44
+  },
+  {
+    "cols": 12672,
+    "threads": 640,
+    "us": 131.1040073633194,
+    "registers": 34
+  },
+  {
+    "cols": 12672,
+    "threads": 768,
+    "us": 139.45600390434265,
+    "registers": 39
+  },
+  {
+    "cols": 12672,
+    "threads": 1024,
+    "us": 161.80799901485443,
+    "registers": 32
+  }
+]

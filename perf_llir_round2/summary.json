@@ -1,0 +1,12 @@
+{
+  "shapes": 98,
+  "target_speedup": 1.6,
+  "api_geomean_speedup": 1.359663209107442,
+  "api_minimum_speedup": 1.0504828527087666,
+  "api_significant_regressions": [],
+  "kernel_geomean_speedup": 1.4647074753085638,
+  "kernel_minimum_speedup": 1.0734654452511883,
+  "kernel_significant_regressions": [],
+  "full_shape_coverage": true,
+  "accepted": false
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "cols": 1024,
+    "compressed": false,
+    "supported": 1,
+    "us": 15.424000099301338
+  },
+  {
+    "cols": 1024,
+    "compressed": true,
+    "supported": 1,
+    "us": 15.519999898970127
+  },
+  {
+    "cols": 2048,
+    "compressed": false,
+    "supported": 1,
+    "us": 24.54400062561035
+  },
+  {
+    "cols": 2048,
+    "compressed": true,
+    "supported": 1,
+    "us": 24.25600029528141
+  },
+  {
+    "cols": 4096,
+    "compressed": false,
+    "supported": 1,
+    "us": 43.68000105023384
+  },
+  {
+    "cols": 4096,
+    "compressed": true,
+    "supported": 1,
+    "us": 43.96799951791763
+  },
+  {
+    "cols": 6144,
+    "compressed": false,
+    "supported": 1,
+    "us": 62.33600154519081
+  },
+  {
+    "cols": 6144,
+    "compressed": true,
+    "supported": 1,
+    "us": 62.78400123119354
+  },
+  {
+    "cols": 8192,
+    "compressed": false,
+    "supported": 1,
+    "us": 81.7599967122078
+  },
+  {
+    "cols": 8192,
+    "compressed": true,
+    "supported": 1,
+    "us": 82.40000158548355
+  },
+  {
+    "cols": 8320,
+    "compressed": false,
+    "supported": 1,
+    "us": 82.87999778985977
+  },
+  {
+    "cols": 8320,
+    "compressed": true,
+    "supported": 1,
+    "us": 83.13599973917007
+  },
+  {
+    "cols": 12672,
+    "compressed": false,
+    "supported": 1,
+    "us": 126.68800354003906
+  },
+  {
+    "cols": 12672,
+    "compressed": true,
+    "supported": 1,
+    "us": 126.43200159072876
+  }
+]

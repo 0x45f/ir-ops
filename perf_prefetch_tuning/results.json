@@ -1,0 +1,338 @@
+[
+  {
+    "cols": 2048,
+    "prefetch": false,
+    "grid": 2,
+    "us": 46.31999880075455,
+    "registers": 31
+  },
+  {
+    "cols": 2048,
+    "prefetch": false,
+    "grid": 4,
+    "us": 32.607998698949814,
+    "registers": 31
+  },
+  {
+    "cols": 2048,
+    "prefetch": false,
+    "grid": 8,
+    "us": 26.59199945628643,
+    "registers": 31
+  },
+  {
+    "cols": 2048,
+    "prefetch": false,
+    "grid": 16,
+    "us": 27.35999971628189,
+    "registers": 31
+  },
+  {
+    "cols": 2048,
+    "prefetch": true,
+    "grid": 2,
+    "us": 32.80000016093254,
+    "registers": 32
+  },
+  {
+    "cols": 2048,
+    "prefetch": true,
+    "grid": 4,
+    "us": 27.55199931561947,
+    "registers": 32
+  },
+  {
+    "cols": 2048,
+    "prefetch": true,
+    "grid": 8,
+    "us": 27.23200060427189,
+    "registers": 32
+  },
+  {
+    "cols": 2048,
+    "prefetch": true,
+    "grid": 16,
+    "us": 28.672000393271446,
+    "registers": 32
+  },
+  {
+    "cols": 4096,
+    "prefetch": false,
+    "grid": 2,
+    "us": 62.192000448703766,
+    "registers": 52
+  },
+  {
+    "cols": 4096,
+    "prefetch": false,
+    "grid": 4,
+    "us": 49.12000149488449,
+    "registers": 52
+  },
+  {
+    "cols": 4096,
+    "prefetch": false,
+    "grid": 8,
+    "us": 50.49600079655647,
+    "registers": 52
+  },
+  {
+    "cols": 4096,
+    "prefetch": false,
+    "grid": 16,
+    "us": 45.72800174355507,
+    "registers": 52
+  },
+  {
+    "cols": 4096,
+    "prefetch": true,
+    "grid": 2,
+    "us": 51.90400034189224,
+    "registers": 58
+  },
+  {
+    "cols": 4096,
+    "prefetch": true,
+    "grid": 4,
+    "us": 48.31999912858009,
+    "registers": 58
+  },
+  {
+    "cols": 4096,
+    "prefetch": true,
+    "grid": 8,
+    "us": 51.29599943757057,
+    "registers": 58
+  },
+  {
+    "cols": 4096,
+    "prefetch": true,
+    "grid": 16,
+    "us": 46.20800167322159,
+    "registers": 58
+  },
+  {
+    "cols": 6144,
+    "prefetch": false,
+    "grid": 2,
+    "us": 81.40800148248672,
+    "registers": 72
+  },
+  {
+    "cols": 6144,
+    "prefetch": false,
+    "grid": 4,
+    "us": 69.5200003683567,
+    "registers": 72
+  },
+  {
+    "cols": 6144,
+    "prefetch": false,
+    "grid": 8,
+    "us": 70.62400132417679,
+    "registers": 72
+  },
+  {
+    "cols": 6144,
+    "prefetch": false,
+    "grid": 16,
+    "us": 65.5359998345375,
+    "registers": 72
+  },
+  {
+    "cols": 6144,
+    "prefetch": true,
+    "grid": 2,
+    "us": 68.92800331115723,
+    "registers": 68
+  },
+  {
+    "cols": 6144,
+    "prefetch": true,
+    "grid": 4,
+    "us": 71.96799665689468,
+    "registers": 68
+  },
+  {
+    "cols": 6144,
+    "prefetch": true,
+    "grid": 8,
+    "us": 72.41600006818771,
+    "registers": 68
+  },
+  {
+    "cols": 6144,
+    "prefetch": true,
+    "grid": 16,
+    "us": 65.43999910354614,
+    "registers": 68
+  },
+  {
+    "cols": 8192,
+    "prefetch": false,
+    "grid": 2,
+    "us": 117.21599847078323,
+    "registers": 96
+  },
+  {
+    "cols": 8192,
+    "prefetch": false,
+    "grid": 4,
+    "us": 88.86399865150452,
+    "registers": 96
+  },
+  {
+    "cols": 8192,
+    "prefetch": false,
+    "grid": 8,
+    "us": 88.0960002541542,
+    "registers": 96
+  },
+  {
+    "cols": 8192,
+    "prefetch": false,
+    "grid": 16,
+    "us": 86.27200126647949,
+    "registers": 96
+  },
+  {
+    "cols": 8192,
+    "prefetch": true,
+    "grid": 2,
+    "us": 84.03199911117554,
+    "registers": 96
+  },
+  {
+    "cols": 8192,
+    "prefetch": true,
+    "grid": 4,
+    "us": 96.49599716067314,
+    "registers": 96
+  },
+  {
+    "cols": 8192,
+    "prefetch": true,
+    "grid": 8,
+    "us": 87.52000331878662,
+    "registers": 96
+  },
+  {
+    "cols": 8192,
+    "prefetch": true,
+    "grid": 16,
+    "us": 84.97599884867668,
+    "registers": 96
+  },
+  {
+    "cols": 8320,
+    "prefetch": false,
+    "grid": 2,
+    "us": 97.43999689817429,
+    "registers": 96
+  },
+  {
+    "cols": 8320,
+    "prefetch": false,
+    "grid": 4,
+    "us": 95.93600034713745,
+    "registers": 96
+  },
+  {
+    "cols": 8320,
+    "prefetch": false,
+    "grid": 8,
+    "us": 87.44000270962715,
+    "registers": 96
+  },
+  {
+    "cols": 8320,
+    "prefetch": false,
+    "grid": 16,
+    "us": 85.15200018882751,
+    "registers": 96
+  },
+  {
+    "cols": 8320,
+    "prefetch": true,
+    "grid": 2,
+    "us": 85.08799970149994,
+    "registers": 96
+  },
+  {
+    "cols": 8320,
+    "prefetch": true,
+    "grid": 4,
+    "us": 97.79199957847595,
+    "registers": 96
+  },
+  {
+    "cols": 8320,
+    "prefetch": true,
+    "grid": 8,
+    "us": 88.76799792051315,
+    "registers": 96
+  },
+  {
+    "cols": 8320,
+    "prefetch": true,
+    "grid": 16,
+    "us": 86.17600053548813,
+    "registers": 96
+  },
+  {
+    "cols": 12672,
+    "prefetch": false,
+    "grid": 2,
+    "us": 132.86399841308594,
+    "registers": 124
+  },
+  {
+    "cols": 12672,
+    "prefetch": false,
+    "grid": 4,
+    "us": 142.94399321079254,
+    "registers": 124
+  },
+  {
+    "cols": 12672,
+    "prefetch": false,
+    "grid": 8,
+    "us": 129.85600531101227,
+    "registers": 124
+  },
+  {
+    "cols": 12672,
+    "prefetch": false,
+    "grid": 16,
+    "us": 125.59999525547028,
+    "registers": 124
+  },
+  {
+    "cols": 12672,
+    "prefetch": true,
+    "grid": 2,
+    "us": 140.44800400733948,
+    "registers": 125
+  },
+  {
+    "cols": 12672,
+    "prefetch": true,
+    "grid": 4,
+    "us": 155.18400073051453,
+    "registers": 125
+  },
+  {
+    "cols": 12672,
+    "prefetch": true,
+    "grid": 8,
+    "us": 137.15200126171112,
+    "registers": 125
+  },
+  {
+    "cols": 12672,
+    "prefetch": true,
+    "grid": 16,
+    "us": 128.92800569534302,
+    "registers": 125
+  }
+]

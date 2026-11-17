@@ -1,0 +1,254 @@
+[
+  {
+    "cols": 2048,
+    "cap": 32,
+    "actual_registers": 31,
+    "us": 24.320000782608986
+  },
+  {
+    "cols": 2048,
+    "cap": 48,
+    "actual_registers": 31,
+    "us": 24.320000782608986
+  },
+  {
+    "cols": 2048,
+    "cap": 64,
+    "actual_registers": 31,
+    "us": 24.320000782608986
+  },
+  {
+    "cols": 2048,
+    "cap": 80,
+    "actual_registers": 31,
+    "us": 24.351999163627625
+  },
+  {
+    "cols": 2048,
+    "cap": 96,
+    "actual_registers": 31,
+    "us": 24.12799932062626
+  },
+  {
+    "cols": 2048,
+    "cap": 128,
+    "actual_registers": 31,
+    "us": 24.12799932062626
+  },
+  {
+    "cols": 2048,
+    "cap": 255,
+    "actual_registers": 31,
+    "us": 24.36799928545952
+  },
+  {
+    "cols": 4096,
+    "cap": 32,
+    "actual_registers": 50,
+    "us": 43.39199885725975
+  },
+  {
+    "cols": 4096,
+    "cap": 48,
+    "actual_registers": 50,
+    "us": 43.455999344587326
+  },
+  {
+    "cols": 4096,
+    "cap": 64,
+    "actual_registers": 50,
+    "us": 43.42399910092354
+  },
+  {
+    "cols": 4096,
+    "cap": 80,
+    "actual_registers": 50,
+    "us": 43.42399910092354
+  },
+  {
+    "cols": 4096,
+    "cap": 96,
+    "actual_registers": 50,
+    "us": 43.455999344587326
+  },
+  {
+    "cols": 4096,
+    "cap": 128,
+    "actual_registers": 50,
+    "us": 43.455999344587326
+  },
+  {
+    "cols": 4096,
+    "cap": 255,
+    "actual_registers": 50,
+    "us": 43.39199885725975
+  },
+  {
+    "cols": 6144,
+    "cap": 32,
+    "actual_registers": 72,
+    "us": 61.824001371860504
+  },
+  {
+    "cols": 6144,
+    "cap": 48,
+    "actual_registers": 72,
+    "us": 61.76000088453293
+  },
+  {
+    "cols": 6144,
+    "cap": 64,
+    "actual_registers": 72,
+    "us": 61.88800185918808
+  },
+  {
+    "cols": 6144,
+    "cap": 80,
+    "actual_registers": 72,
+    "us": 61.72800064086914
+  },
+  {
+    "cols": 6144,
+    "cap": 96,
+    "actual_registers": 72,
+    "us": 61.63199990987778
+  },
+  {
+    "cols": 6144,
+    "cap": 128,
+    "actual_registers": 72,
+    "us": 61.37600168585777
+  },
+  {
+    "cols": 6144,
+    "cap": 255,
+    "actual_registers": 72,
+    "us": 61.43999844789505
+  },
+  {
+    "cols": 8192,
+    "cap": 32,
+    "actual_registers": 92,
+    "us": 81.40800148248672
+  },
+  {
+    "cols": 8192,
+    "cap": 48,
+    "actual_registers": 92,
+    "us": 81.11999928951263
+  },
+  {
+    "cols": 8192,
+    "cap": 64,
+    "actual_registers": 92,
+    "us": 81.37600123882294
+  },
+  {
+    "cols": 8192,
+    "cap": 80,
+    "actual_registers": 92,
+    "us": 81.15199953317642
+  },
+  {
+    "cols": 8192,
+    "cap": 96,
+    "actual_registers": 92,
+    "us": 81.44000172615051
+  },
+  {
+    "cols": 8192,
+    "cap": 128,
+    "actual_registers": 92,
+    "us": 81.18399977684021
+  },
+  {
+    "cols": 8192,
+    "cap": 255,
+    "actual_registers": 92,
+    "us": 81.50400221347809
+  },
+  {
+    "cols": 8320,
+    "cap": 32,
+    "actual_registers": 94,
+    "us": 81.66400343179703
+  },
+  {
+    "cols": 8320,
+    "cap": 48,
+    "actual_registers": 94,
+    "us": 81.69600367546082
+  },
+  {
+    "cols": 8320,
+    "cap": 64,
+    "actual_registers": 94,
+    "us": 81.95199817419052
+  },
+  {
+    "cols": 8320,
+    "cap": 80,
+    "actual_registers": 94,
+    "us": 81.69600367546082
+  },
+  {
+    "cols": 8320,
+    "cap": 96,
+    "actual_registers": 94,
+    "us": 81.95199817419052
+  },
+  {
+    "cols": 8320,
+    "cap": 128,
+    "actual_registers": 94,
+    "us": 81.69600367546082
+  },
+  {
+    "cols": 8320,
+    "cap": 255,
+    "actual_registers": 94,
+    "us": 81.727996468544
+  },
+  {
+    "cols": 12672,
+    "cap": 32,
+    "actual_registers": 124,
+    "us": 120.7360029220581
+  },
+  {
+    "cols": 12672,
+    "cap": 48,
+    "actual_registers": 124,
+    "us": 120.7360029220581
+  },
+  {
+    "cols": 12672,
+    "cap": 64,
+    "actual_registers": 124,
+    "us": 120.67200243473053
+  },
+  {
+    "cols": 12672,
+    "cap": 80,
+    "actual_registers": 124,
+    "us": 120.7360029220581
+  },
+  {
+    "cols": 12672,
+    "cap": 96,
+    "actual_registers": 124,
+    "us": 120.67200243473053
+  },
+  {
+    "cols": 12672,
+    "cap": 128,
+    "actual_registers": 124,
+    "us": 120.70400267839432
+  },
+  {
+    "cols": 12672,
+    "cap": 255,
+    "actual_registers": 124,
+    "us": 120.70400267839432
+  }
+]

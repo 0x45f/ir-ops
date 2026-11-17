@@ -27,10 +27,14 @@ class _Executable:
     packed_metadata: tuple
     cubin: bytes
     num_programs: int
+    n_regs: int
+    rows_per_cta: int = 1
 
 
-@lru_cache(maxsize=8)
-def _compile_llvm_ir(device_index: int, llir: str) -> _Executable:
+@lru_cache(maxsize=128)
+def _compile_llvm_ir(device_index: int, llir: str, num_warps: int = _NUM_WARPS,
+                     shared: int = _SHARED_BYTES, rows_per_cta: int = 1,
+                     persistent: bool = True) -> _Executable:
     """Run Triton's LLVM IR -> PTX -> cubin stages directly."""
     with torch.cuda.device(device_index):
         target = driver.active.get_current_target()
@@ -39,8 +43,8 @@ def _compile_llvm_ir(device_index: int, llir: str) -> _Executable:
 
         llvm.init_targets()
         backend = CUDABackend(target)
-        options = backend.parse_options({"num_warps": _NUM_WARPS, "num_stages": _NUM_STAGES})
-        compile_metadata = {"shared": _SHARED_BYTES}
+        options = backend.parse_options({"num_warps": num_warps, "num_stages": _NUM_STAGES})
+        compile_metadata = {"shared": shared}
         ptx = backend.make_ptx(llir, compile_metadata, options, target.arch)
         cubin = backend.make_cubin(ptx, compile_metadata, options, target.arch)
 
@@ -51,9 +55,9 @@ def _compile_llvm_ir(device_index: int, llir: str) -> _Executable:
             constants={},
         )
         launch_metadata = SimpleNamespace(
-            num_warps=_NUM_WARPS,
+            num_warps=num_warps,
             num_ctas=1,
-            shared=_SHARED_BYTES,
+            shared=shared,
             global_scratch_size=0,
             global_scratch_align=1,
             profile_scratch_size=0,
@@ -64,14 +68,43 @@ def _compile_llvm_ir(device_index: int, llir: str) -> _Executable:
         launcher = driver.active.launcher_cls(source, launch_metadata)
         device = driver.active.get_current_device()
         module, function, n_regs, _, _ = driver.active.utils.load_binary(
-            compile_metadata["name"], cubin, _SHARED_BYTES, device
+            compile_metadata["name"], cubin, shared, device
         )
         # Match the persistent grid calculation in triton_softmax.softmax.
         properties = driver.active.utils.get_device_properties(device)
-        occupancy = properties["max_num_regs"] // (n_regs * properties["warpSize"] * _NUM_WARPS)
-        occupancy = min(occupancy, properties["max_shared_mem"] // _SHARED_BYTES)
+        occupancy = properties["max_num_regs"] // (n_regs * properties["warpSize"] * num_warps)
+        if shared:
+            occupancy = min(occupancy, properties["max_shared_mem"] // shared)
         num_programs = properties["multiprocessor_count"] * occupancy
-        return _Executable(module, function, launcher, backend.pack_metadata(launch_metadata), cubin, num_programs)
+        return _Executable(module, function, launcher, backend.pack_metadata(launch_metadata),
+                           cubin, num_programs if persistent else 0, n_regs, rows_per_cta)
+
+
+@lru_cache(maxsize=64)
+def _get_executable(device_index: int, block: int) -> _Executable:
+    path = _LLIR_PATH.parent / 'ir_optimized' / f'softmax_{block}.llir'
+    warp_rows = block <= 1024
+    return _compile_llvm_ir(device_index, path.read_text(), num_warps=4,
+                            shared=0 if warp_rows else 16,
+                            rows_per_cta=4 if warp_rows else 1, persistent=False)
+
+
+def _select_block(cols: int) -> int:
+    # LLVM IR need not use power-of-two tiles. Only round to one vector per
+    # lane (small rows) or per CTA thread (large rows).
+    unit = 128 if cols <= 1024 else 512
+    return max(256, (cols + unit - 1) // unit * unit)
+
+
+def _launch(executable, x, y, stream):
+    rows, cols = x.shape
+    grid = (rows + executable.rows_per_cta - 1) // executable.rows_per_cta
+    if executable.num_programs:
+        grid = min(grid, executable.num_programs)
+    executable.launcher(
+        grid, 1, 1, stream, executable.function, executable.packed_metadata,
+        None, None, None, y, x, x.stride(0), y.stride(0), rows, cols,
+    )
 
 
 def softmax_from_llir(x: torch.Tensor) -> torch.Tensor:
@@ -79,7 +112,8 @@ def softmax_from_llir(x: torch.Tensor) -> torch.Tensor:
 
     ``x`` must be contiguous, 2D, float32, and have 1 to 16384 columns.
     Inputs that do not meet the saved IR's alignment specialization are padded.
-    Compilation happens on the first call for each GPU and IR content.
+    Compilation happens once per GPU and column-width bucket. Restart the
+    process (or clear both compilation caches) after editing an IR file.
     """
     if x.ndim != 2:
         raise ValueError("x must be a 2D tensor")
@@ -93,9 +127,6 @@ def softmax_from_llir(x: torch.Tensor) -> torch.Tensor:
     n_rows, n_cols = x.shape
     if not 1 <= n_cols <= _BLOCK_SIZE:
         raise ValueError(f"x must have between 1 and {_BLOCK_SIZE} columns")
-    if not _LLIR_PATH.is_file():
-        raise FileNotFoundError(_LLIR_PATH)
-
     if n_rows == 0:
         return torch.empty_like(x)
 
@@ -111,12 +142,14 @@ def softmax_from_llir(x: torch.Tensor) -> torch.Tensor:
         x = padded
     y = torch.empty_like(x)
 
-    with torch.cuda.device(x.device):
-        executable = _compile_llvm_ir(x.device.index, _LLIR_PATH.read_text())
-        device = driver.active.get_current_device()
+    block = _select_block(n_cols)
+    device = x.device.index
+    executable = _get_executable(device, block)
+    if device == driver.active.get_current_device():
         stream = driver.active.get_current_stream(device)
-        executable.launcher(
-            min(executable.num_programs, n_rows), 1, 1, stream, executable.function, executable.packed_metadata,
-            None, None, None, y, x, x.stride(0), y.stride(0), n_rows, n_cols,
-        )
+        _launch(executable, x, y, stream)
+    else:
+        with torch.cuda.device(device):
+            stream = driver.active.get_current_stream(device)
+            _launch(executable, x, y, stream)
     return y[:, :original_n_cols].contiguous() if needs_padding else y

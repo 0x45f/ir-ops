@@ -1,0 +1,170 @@
+[
+  {
+    "cols": 2048,
+    "threads": 128,
+    "separate": false,
+    "us": 24.07999988645315,
+    "registers": 31
+  },
+  {
+    "cols": 2048,
+    "threads": 128,
+    "separate": true,
+    "us": 24.159999564290047,
+    "registers": 31
+  },
+  {
+    "cols": 2048,
+    "threads": 256,
+    "separate": false,
+    "us": 25.631999596953392,
+    "registers": 24
+  },
+  {
+    "cols": 2048,
+    "threads": 256,
+    "separate": true,
+    "us": 25.407999753952026,
+    "registers": 24
+  },
+  {
+    "cols": 4096,
+    "threads": 128,
+    "separate": false,
+    "us": 43.23200136423111,
+    "registers": 50
+  },
+  {
+    "cols": 4096,
+    "threads": 128,
+    "separate": true,
+    "us": 43.23200136423111,
+    "registers": 50
+  },
+  {
+    "cols": 4096,
+    "threads": 256,
+    "separate": false,
+    "us": 43.42399910092354,
+    "registers": 32
+  },
+  {
+    "cols": 4096,
+    "threads": 256,
+    "separate": true,
+    "us": 43.35999861359596,
+    "registers": 32
+  },
+  {
+    "cols": 6144,
+    "threads": 128,
+    "separate": false,
+    "us": 61.47199869155884,
+    "registers": 72
+  },
+  {
+    "cols": 6144,
+    "threads": 128,
+    "separate": true,
+    "us": 61.872001737356186,
+    "registers": 72
+  },
+  {
+    "cols": 6144,
+    "threads": 256,
+    "separate": false,
+    "us": 61.69600039720535,
+    "registers": 39
+  },
+  {
+    "cols": 6144,
+    "threads": 256,
+    "separate": true,
+    "us": 61.792001128196716,
+    "registers": 39
+  },
+  {
+    "cols": 8192,
+    "threads": 128,
+    "separate": false,
+    "us": 81.44000172615051,
+    "registers": 92
+  },
+  {
+    "cols": 8192,
+    "threads": 128,
+    "separate": true,
+    "us": 81.37600123882294,
+    "registers": 92
+  },
+  {
+    "cols": 8192,
+    "threads": 256,
+    "separate": false,
+    "us": 81.28000050783157,
+    "registers": 50
+  },
+  {
+    "cols": 8192,
+    "threads": 256,
+    "separate": true,
+    "us": 81.216000020504,
+    "registers": 50
+  },
+  {
+    "cols": 8320,
+    "threads": 128,
+    "separate": false,
+    "us": 81.69600367546082,
+    "registers": 94
+  },
+  {
+    "cols": 8320,
+    "threads": 128,
+    "separate": true,
+    "us": 81.63200318813324,
+    "registers": 94
+  },
+  {
+    "cols": 8320,
+    "threads": 256,
+    "separate": false,
+    "us": 81.91999793052673,
+    "registers": 56
+  },
+  {
+    "cols": 8320,
+    "threads": 256,
+    "separate": true,
+    "us": 81.88799768686295,
+    "registers": 56
+  },
+  {
+    "cols": 12672,
+    "threads": 128,
+    "separate": false,
+    "us": 120.70400267839432,
+    "registers": 124
+  },
+  {
+    "cols": 12672,
+    "threads": 128,
+    "separate": true,
+    "us": 120.7360029220581,
+    "registers": 124
+  },
+  {
+    "cols": 12672,
+    "threads": 256,
+    "separate": false,
+    "us": 120.7360029220581,
+    "registers": 74
+  },
+  {
+    "cols": 12672,
+    "threads": 256,
+    "separate": true,
+    "us": 120.64000219106674,
+    "registers": 74
+  }
+]
